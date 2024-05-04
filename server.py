@@ -47,9 +47,10 @@ def broadcast(conn, msg):
 def serverStart(serverPort, clientsAmount):
     serverIp = socket.gethostbyname(socket.gethostname())
     
-    print("CLIENTS NEED TO CONNECT TO THIS IP:")
+    print("CLIENTS NEED TO CONNECT TO THIS IP AND PORT:")
     print("---------------")
     print(serverIp)
+    print(serverPort)
     print("---------------")
     print()
 
