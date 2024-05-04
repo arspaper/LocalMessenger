@@ -63,7 +63,7 @@ def serverStart(serverPort, clientsAmount):
         conn, addr = serverSocket.accept()
         thread = threading.Thread(target=clientHandler, args=(conn, addr))
         thread.start()
-        print(f"ACTIVE CONNECTIONS: {threading.activeCount() - 1}")
+        print(f"ACTIVE CONNECTIONS: {threading.active_count() - 1}")
         print()
 
 
