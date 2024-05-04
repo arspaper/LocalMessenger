@@ -19,7 +19,7 @@ def messageRecieve(sock):
 
 def messageSend(sock):
     while True:
-        message = input('')
+        message = input('> ')
         sock.send(message.encode('utf-8'))
 
 try:
