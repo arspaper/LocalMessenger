@@ -1,8 +1,8 @@
 import socket, threading
 
 
-serverIp = input("Please input server IP: ")
-serverPort = int(input("Please input server port: "))
+serverIp = input("SYSTEM: Please input server IP: ")
+serverPort = int(input("SYSTEM: Please input server port: "))
 
 
 def messageRecieve(sock):
@@ -22,12 +22,16 @@ def messageSend(sock):
         message = input('')
         sock.send(message.encode('utf-8'))
 
+try:
+    mySocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    mySocket.connect((serverIp, serverPort))
 
-mySocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-mySocket.connect((serverIp, serverPort))
+    threadRecv = threading.Thread(target=messageRecieve, args=(mySocket,))
+    threadRecv.start()
 
-threadRecv = threading.Thread(target=messageRecieve, args=(mySocket,))
-threadRecv.start()
+    threadSend = threading.Thread(target=messageSend, args=(mySocket,))
+    threadSend.start()
+    print("SYSTEM: Connection established. You are ready to send or recieve messages.")
 
-threadSend = threading.Thread(target=messageSend, args=(mySocket,))
-threadSend.start()
+except:
+    print("SYSTEM: Unable to establish connection with server.")

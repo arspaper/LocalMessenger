@@ -27,7 +27,7 @@ def clientHandler(conn, addr):
                 broadcast(conn, f"{clientName}: {clientMessage}")
         except:
             clientsConnections.remove(conn)
-            broadcast(conn, f"User {clientName} has left the chat.")
+            broadcast(conn, f"SYSTEM: User {clientName} has left the chat.")
             print(f"{clientName} FROM {addr} HAS DISCONNECTED")
             print()
             conn.close()
