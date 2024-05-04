@@ -1,8 +1,8 @@
 import socket, threading
 
 
-serverIp = input("Please input server IP")
-serverPort = int(input("Please input server port"))
+serverIp = input("Please input server IP: ")
+serverPort = int(input("Please input server port: "))
 
 
 def messageRecieve(sock):
